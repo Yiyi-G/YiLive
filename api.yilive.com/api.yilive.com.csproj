@@ -6,8 +6,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resource - 复制\**" />
+    <Content Remove="Resource - 复制\**" />
+    <EmbeddedResource Remove="Resource - 复制\**" />
+    <None Remove="Resource - 复制\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YiLive\YiLive.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Tgnet">
+      <HintPath>C:\Dlls\NetCore\netcoreapp2.2\Tgnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Tgnet.Api">
+      <HintPath>C:\Dlls\NetCore\netcoreapp2.2\Tgnet.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Tgnet.Api.Mvc">
+      <HintPath>C:\Dlls\NetCore\netcoreapp2.2\Tgnet.Api.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resource\Img\cache\" />
+    <Folder Include="Resource\Img\KeepFitDiaryImg\DiaryImg\" />
+    <Folder Include="Resource\Img\KeepFitDiaryImg\FoodImg\" />
+    <Folder Include="Resource\Img\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

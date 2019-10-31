@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -26,6 +27,11 @@ namespace api.yilive.com
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            var sqlConnection = Configuration.GetConnectionString("SqlServerConnection");
+            services.AddDbContext<YiLive.Data.YiyiLiveContext>(options => options.UseSqlServer(sqlConnection));
+            services.AddScoped<YiLive.Data.YiyiLiveContext, YiLive.Data.YiyiLiveContext>();
+            YiLive.Inject.DataInject.BindDataInject(services);
+            YiLive.Inject.ServiceInject.BindServiceInject(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

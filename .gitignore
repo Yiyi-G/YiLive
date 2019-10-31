@@ -3,3 +3,8 @@
 ################################################################################
 
 /api.yilive.com/bin/Debug/netcoreapp2.2
+/YiLive/obj/Debug/netcoreapp2.2
+/YiLive/bin/Debug/netcoreapp2.2
+/.vs
+/api.yilive.com/obj
+/YiLive/obj
