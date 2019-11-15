@@ -15,7 +15,7 @@ namespace YiLive.KeepFit
     public interface IKitFitDiaryManager
     {
         long AddOrUpdate(IUserService user, KeepFitDiaryUpdateModel model);
-        Models.KeepFitDiaryModel[] GetDiaryList(long uid, int start, int limit);
+        Models.KeepFitDiaryModel[] GetDiaryList(long uid, int start, int limit, out int count);
     }
     public class KitFitDiaryManager : IKitFitDiaryManager
     {
@@ -95,10 +95,12 @@ namespace YiLive.KeepFit
             return entity.Id;
         }
 
-        public KeepFitDiaryModel[] GetDiaryList(long uid, int start, int limit)
+        public  KeepFitDiaryModel[] GetDiaryList(long uid, int start, int limit,out int count)
         {
-            var diaries = _KeepFitDiaryRepository.Entities.Where(p => p.Uid == uid && p.IsEnabled)
-                 .OrderByDescending(p => p.Date).Take(/*start, */limit)
+            var query = _KeepFitDiaryRepository.Entities.Where(p => p.Uid == uid && p.IsEnabled);
+            count = query.Count();
+            var diaries = query
+                 .OrderByDescending(p => p.Date).Take(start, limit)
                  .Select(p => new KeepFitDiaryModel()
                  {
                      Kid = p.Id,

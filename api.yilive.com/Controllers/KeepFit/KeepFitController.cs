@@ -41,16 +41,20 @@ namespace api.yilive.com.Controllers.KeepFit
             limit = limit ?? 10;
             limit = limit < 1 ? 10 : limit;
             var user = _UserServiceFactory.GetService(1);
-            var diaries = _KitFitDiaryManager.GetDiaryList(user.Uid, start.Value, limit.Value);
+            int count = 0;
+            var diaries = _KitFitDiaryManager.GetDiaryList(user.Uid, start.Value, limit.Value,out count);
             var kids = diaries.Select(p => p.Kid).ToArray();
             var foods = _DailyFoodManager.GetFoodsByKfIds(kids);
-            var result = diaries.Select(p =>
+            var result = new List<KeepFitDiaryListItem>();
+            for (int i = 0; i < diaries.Length; i++)
             {
+                var p = diaries[i];
                 var diaryFoods = foods.Where(f => f.KFId == p.Kid);
                 var diary = new Models.KeepFitDiaryListItem(p, diaryFoods);
-                return diary;
-            }).ToArray();
-            return this.JsonApiResult(ErrorCode.None, result);
+                diary.Num = count - start.Value - i;
+                result.Add(diary);
+            }
+            return this.JsonApiResult(ErrorCode.None, result.ToArray());
         }
 
         [HttpPut]

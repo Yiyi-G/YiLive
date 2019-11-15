@@ -23,6 +23,10 @@ namespace api.yilive.com.Models
         public string[] Imgs { get; set; }
         [JsonProperty(PropertyName = "foods", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public DailyFoodListItem[] Foods { get; set; }
+        [JsonProperty(PropertyName = "num", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int? Num { get; set; }
+
+
 
         public KeepFitDiaryListItem() { }
         public KeepFitDiaryListItem(YiLive.Models.KeepFitDiaryModel model,IEnumerable<YiLive.Models.DailyFoodModel> foods)

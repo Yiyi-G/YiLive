@@ -85,5 +85,14 @@ namespace api.yilive.com.Utility
             }
             return fid;
         }
+
+        public static MemoryStream GetImg(string fid)
+        {
+            var absloteUrl = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, ("Resource/Img/" + fid).Replace("/", "\\"));
+            Image img = System.Drawing.Image.FromFile(absloteUrl);
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, img.RawFormat);
+            return ms;
+        }
     }
 }
