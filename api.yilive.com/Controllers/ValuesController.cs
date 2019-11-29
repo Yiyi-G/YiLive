@@ -31,9 +31,10 @@ namespace api.yilive.com.Controllers
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public object Put()
         {
+            return Content("测试成功");
         }
 
         // DELETE api/values/5

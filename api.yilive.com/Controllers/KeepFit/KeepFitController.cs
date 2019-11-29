@@ -56,6 +56,7 @@ namespace api.yilive.com.Controllers.KeepFit
             }
             return this.JsonApiResult(ErrorCode.None, result.ToArray());
         }
+        
 
         [HttpPut]
         public object AddOrUpdate([FromBody]KeepFitDiaryUpdateRequest request)

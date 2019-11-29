@@ -8,3 +8,5 @@
 /.vs
 /api.yilive.com/obj
 /YiLive/obj
+/api.yilive.com/bin/Release/netcoreapp2.2
+/YiLive/bin/Release/netcoreapp2.2

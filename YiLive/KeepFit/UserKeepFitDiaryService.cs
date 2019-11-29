@@ -109,7 +109,7 @@ namespace YiLive.KeepFit
         public override void Delete()
         {
             ThrowExceptionIfNotSelf();
-            _LazyEntity.Value.IsEnabled = true;
+            _LazyEntity.Value.IsEnabled = false;
             _KeepFitDiaryRepository.SaveChanges();
         }
         private bool CheckIsSelf()

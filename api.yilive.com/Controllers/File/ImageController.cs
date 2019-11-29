@@ -15,7 +15,7 @@ namespace api.yilive.com.Controllers.File
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ImageController : ControllerBase
+    public class ImageController : Controller
     {
         public ImageController() {
 
